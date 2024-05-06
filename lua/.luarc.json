@@ -1,0 +1,7 @@
+{
+    "workspace.checkThirdParty": false,
+    "diagnostics.disable": [
+        "redundant-parameter",
+        "undefined-field"
+    ]
+}
