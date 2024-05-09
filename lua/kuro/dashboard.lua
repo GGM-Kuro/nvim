@@ -21,7 +21,7 @@ dashboard.section.buttons.val = {
   dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
   dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
   -- dashboard.button("c", " " .. " Config", ":Oil --float " .. os.getenv("MYVIMRC") .. "<CR>"),
-  dashboard.button("c", " " .. " Config", ":Telescope file_browser path=$MYVIMRC <CR>"),
+  dashboard.button("c", " " .. " Config", ":Telescope file_browser path=$MYVIMRC/lua/ <CR>"),
   -- dashboard.button(".", " " .. " Dotfiles", ":Oil --float " .. os.getenv("DOTFILES_PATH") .. "<CR>"),
   dashboard.button(".", " " .. " Dotfiles", ":Telescope file_browser path=$DOTFILES_PATH <CR>"),
   -- dashboard.button("p", " " .. " Repos", ":Telescope file_browser path=$Proyects <CR>"),

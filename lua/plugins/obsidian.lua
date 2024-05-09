@@ -7,14 +7,6 @@ return{
   dependencies = {
    "nvim-lua/plenary.nvim",
   },
-  opts = {
-    workspaces = {
-      {
-        name = "notes",
-        path = "~/Desktop/kuro/Notes"
-      },
-    }
-  },
   config =function ()
     require"kuro.obsidian"
   end,

@@ -5,6 +5,8 @@ lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
   'pyright',
+  'lua',
+  'dart'
 })
 
 --require('luasnip').filetype_extend("dart", { "flutter" })
