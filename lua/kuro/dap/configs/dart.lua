@@ -3,11 +3,16 @@ local dap = require('dap')
 dap.adapters.dart = {
   type = "executable",
   command = "dart",
+  env = {
+    ['DART_SDK_HOME'] = "$DART_HOME/bin/dart"
+  },
+  sourceLanguages = { 'dart' },
   -- This command was introduced upstream in https://github.com/dart-lang/sdk/commit/b68ccc9a
   args = {"debug_adapter"}
 }
 dap.configurations.dart = {
   {
+    require("dap.ext.vscode").load_launchjs(),
     type = "dart",
     request = "launch",
     name = "Launch Dart Program",

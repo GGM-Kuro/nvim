@@ -1,28 +1,28 @@
 return {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
+	{
+		"williamboman/mason.nvim",
+		lazy = false,
+		config = function()
+			require("mason").setup()
+		end,
+	},
+	{
+		-- bridges the gap between mason and lspconfig
+		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		lazy = false,
+		config = function()
+			require 'kuro.lsp'
+		end,
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
 
-  dependencies = {
-    "neovim/nvim-lspconfig",
-    "onsails/lspkind.nvim",
-    "folke/neodev.nvim",
-    {
-      "williamboman/mason.nvim",
-      dependencies = "williamboman/mason-lspconfig.nvim",
-      opts = {
-        ensure_istalled = {
-          "debugpy",
-          "ruff",
-        },
-        ui = {
-          border = 'rounded'
-        },
-      },
-      build = ':MasonUpdate',
-      config = true,
-    },
-      },
-    config = function ()
-     require "kuro.lsp"
-    end,
+			{ "j-hui/fidget.nvim", tag = "legacy" },
+			-- support for dart hot reload on save
+			"RobertBrunhage/dart-tools.nvim",
+		},
+	},
 }

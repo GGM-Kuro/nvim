@@ -14,7 +14,7 @@ vim.keymap.set('v', '>', '>gv', { desc = "after tab in re-select the same" })
 
 vim.keymap.set('n', '.', 'nzzzv', { desc = "NextResult->Middle " })
 vim.keymap.set('n', ',', 'Nzzzv', { desc = "PrevResult->Middle " })
-vim.keymap.set('n', ';', '.', { desc = "repeat" })
+vim.keymap.set('n', '>', '.', { desc = "repeat" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half screen up center cursor" })

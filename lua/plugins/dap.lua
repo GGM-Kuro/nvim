@@ -25,6 +25,8 @@ return {
           { name = "dap" },
         }, {
           { name = "buffer" },
+        }, {
+          { name = 'codeium' },
         }),
       })
     end

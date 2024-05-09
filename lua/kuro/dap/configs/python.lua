@@ -1,1 +1,1 @@
-require('dap-python').setup('~/AppData/Local/nvim-data/mason/packages/debugpy/Scripts/python')
+require('dap-python').setup('')

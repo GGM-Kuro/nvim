@@ -12,7 +12,7 @@ return {
   {
     'echasnovski/mini.move',
     version = '*',
-    config = function ()
+    config = function()
       ---@diagnostic disable: undefined-global
       if not LAYOUT then
         require('mini.move').setup {
@@ -33,5 +33,29 @@ return {
       end
     end,
   },
-}
+  {
+    'echasnovski/mini.splitjoin',
+    version = '*',
+    config = function()
+      require('mini.splitjoin').setup()
+    end
+  },
+  {
+    'echasnovski/mini.surround',
+    version = '*',
+    config = function()
+      require('mini.surround').setup({
+        mappings = {
+          add = '(a',              -- Add surrounding in Normal and Visual modes
+          delete = '(d',           -- Delete surrounding
+          find = '(f',             -- Find surrounding (to the right)
+          find_left = '(F',        -- Find surrounding (to the left)
+          highlight = '(h',        -- Highlight surrounding
+          replace = '(r',          -- Replace surrounding
+          update_n_lines = '(n',   -- Update `n_lines`
+        }
+      })
+    end
+  },
 
+}
