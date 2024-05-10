@@ -1,118 +1,119 @@
 local lsp_config = require("lspconfig")
-			require("mason").setup()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					-- dart sdk ships with LSP
-					"astro",
-					"tailwindcss",
-					"tsserver",
-					"lua_ls",
-				},
-			})
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    -- dart sdk ships with LSP
+    "astro",
+    "tailwindcss",
+    "tsserver",
+    "lua_ls",
+  },
+})
 
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-			vim.keymap.set("n", "<leader>dl", vim.diagnostic.setqflist)
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			vim.keymap.set({ "n", "i" }, "<C-b>", function()
-				vim.lsp.inlay_hint(0, nil)
-			end)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>dl", vim.diagnostic.setqflist)
 
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-				callback = function(ev)
-					-- Buffer local mappings.
-					-- See `:help vim.lsp.*` for documentation on any of the below functions
-					local opts = { buffer = ev.buf }
+vim.keymap.set({ "n", "i" }, "<C-b>", function()
+  vim.lsp.inlay_hint(0, nil)
+end)
 
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-					vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
-					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-					vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-				end,
-			})
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
 
-			vim.diagnostic.config({
-				virtual_text = true,
-				signs = false,
-			})
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+  end,
+})
 
-			local dartExcludedFolders = {
-				vim.fn.expand("$FLUTTER_HOME/"),
-				vim.fn.expand("$HOME/.pub-cache"),
-			}
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = false,
+})
 
-			lsp_config["dcmls"].setup({
-				capabilities = capabilities,
-				cmd = {
-					"dcm",
-					"start-server",
-				},
-				filetypes = { "dart", "yaml" },
-				settings = {
-					dart = {
-						analysisExcludedFolders = dartExcludedFolders,
-					},
-				},
-			})
+local dartExcludedFolders = {
+  vim.fn.expand("$FLUTTER_HOME/"),
+  vim.fn.expand("$HOME/.pub-cache"),
+}
 
-			lsp_config["dartls"].setup({
-				capabilities = capabilities,
-				cmd = {
-					"dart",
-					"language-server",
-					"--protocol=lsp",
-					-- "--port=8123",
-					-- "--instrumentation-log-file=/Users/robertbrunhage/Desktop/lsp-log.txt",
-				},
-				filetypes = { "dart" },
-				init_options = {
-					onlyAnalyzeProjectsWithOpenFiles = false,
-					suggestFromUnimportedLibraries = true,
-					closingLabels = true,
-					outline = false,
-					flutterOutline = false,
-				},
-				settings = {
-					dart = {
-						analysisExcludedFolders = dartExcludedFolders,
-						updateImportsOnRename = true,
-						completeFunctionCalls = true,
-						showTodos = true,
-					},
-				},
-			})
+lsp_config["dcmls"].setup({
+  capabilities = capabilities,
+  cmd = {
+    "dcm",
+    "start-server",
+  },
+  filetypes = { "dart", "yaml" },
+  settings = {
+    dart = {
+      analysisExcludedFolders = dartExcludedFolders,
+    },
+  },
+})
 
-			lsp_config.astro.setup({
-				capabilities = capabilities,
-			})
+lsp_config["dartls"].setup({
+  capabilities = capabilities,
+  cmd = {
+    "dart",
+    "language-server",
+    "--protocol=lsp",
+    -- "--port=8123",
+    -- "--instrumentation-log-file=/Users/robertbrunhage/Desktop/lsp-log.txt",
+  },
+  filetypes = { "dart" },
+  init_options = {
+    onlyAnalyzeProjectsWithOpenFiles = false,
+    suggestFromUnimportedLibraries = true,
+    closingLabels = true,
+    outline = false,
+    flutterOutline = false,
+  },
+  settings = {
+    dart = {
+      analysisExcludedFolders = dartExcludedFolders,
+      updateImportsOnRename = true,
+      completeFunctionCalls = true,
+      showTodos = true,
+    },
+  },
+})
 
-			lsp_config.tailwindcss.setup({
-				capabilities = capabilities,
-			})
+lsp_config.astro.setup({
+  capabilities = capabilities,
+})
 
-			lsp_config.tsserver.setup({
-				capabilities = capabilities,
-			})
+lsp_config.tailwindcss.setup({
+  capabilities = capabilities,
+})
 
-			lsp_config.lua_ls.setup({
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
-					},
-				},
-			})
+lsp_config.tsserver.setup({
+  capabilities = capabilities,
+})
 
-			-- Tooltip for the lsp in bottom right
-			require("fidget").setup({})
+lsp_config.lua_ls.setup({
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
+})
 
-			-- Hot reload :)
-			require("dart-tools")
+-- Tooltip for the lsp in bottom right
+require("fidget").setup({})
+
+-- Hot reload :)
+require("dart-tools")

@@ -19,6 +19,7 @@ return {
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
+      "onsails/lspkind.nvim",
 
 			{ "j-hui/fidget.nvim", tag = "legacy" },
 			-- support for dart hot reload on save
