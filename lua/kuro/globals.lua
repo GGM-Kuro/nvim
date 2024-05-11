@@ -8,9 +8,9 @@ dump = function(...)
     for _, v in ipairs(args) do
         table.insert(mapped, vim.inspect(v))
     end
-    print(unpack(mapped))
+    print(table.unpack(mapped))
 
-    return unpack(args)
+    return table.unpack(args)
 end
 
 RELOAD = function(...)

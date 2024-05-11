@@ -67,7 +67,7 @@ hydra {
       position = "bottom",
     },
   },
-  body = "<leader>d",
+  body = "<c-x>",
   heads = {
     { "d", dap.continue },
     { "bp", dap.toggle_breakpoint },

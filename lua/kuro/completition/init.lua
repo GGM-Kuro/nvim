@@ -1,6 +1,6 @@
-local cmp = require"cmp"
-local lspkind = require"lspkind"
-local compare = require"cmp.config.compare"
+local cmp = require "cmp"
+local lspkind = require "lspkind"
+local compare = require "cmp.config.compare"
 local cmp_mappings = cmp.mapping.preset.insert({
   ["<C-b>"] = cmp.mapping.scroll_docs(-4),
   ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -8,7 +8,7 @@ local cmp_mappings = cmp.mapping.preset.insert({
   ["<C-e>"] = cmp.mapping.abort(),
   ["<C-y>"] = cmp.mapping.confirm({
     select = true,
-    behavior = cmp.ConfirmBehavior.Insert
+    behavior = cmp.ConfirmBehavior.Replace
   }),
 })
 
@@ -67,6 +67,8 @@ cmp.setup({
       compare.sort_text,
     },
   },
+
+
 
   mapping = cmp_mappings,
 })

@@ -17,7 +17,7 @@ vim.keymap.set('n', ',', 'Nzzzv', { desc = "PrevResult->Middle " })
 vim.keymap.set('n', '>', '.', { desc = "repeat" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "" })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half screen up center cursor" })
+vim.keymap.set( "n", "<C-d>", "<C-d>zz", { desc = "Half screen up center cursor" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half screen down center cursor" })
 
 vim.keymap.set("n", "<leader>bq", '<Esc>:%bdelete|edit #|normal`"<Return>',
@@ -40,9 +40,16 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<c-f>", vim.lsp.buf.format)
 
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
                 { desc = 'Epic replace'})
--- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+vim.keymap.set("n", "<leader>sl", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+                { desc = 'Replace in current line' })
+
+vim.keymap.set("n", "<leader>s?", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gcI<Left><Left><Left>]],
+                { desc = 'Replace all with confirmation' })
+
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")

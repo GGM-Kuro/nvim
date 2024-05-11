@@ -25,8 +25,6 @@ end)
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -68,8 +66,6 @@ lsp_config["dartls"].setup({
     "dart",
     "language-server",
     "--protocol=lsp",
-    -- "--port=8123",
-    -- "--instrumentation-log-file=/Users/robertbrunhage/Desktop/lsp-log.txt",
   },
   filetypes = { "dart" },
   init_options = {
@@ -87,6 +83,10 @@ lsp_config["dartls"].setup({
       showTodos = true,
     },
   },
+})
+
+lsp_config.pyright.setup({
+  capabilities = capabilities,
 })
 
 lsp_config.astro.setup({
@@ -116,4 +116,4 @@ lsp_config.lua_ls.setup({
 require("fidget").setup({})
 
 -- Hot reload :)
-require("dart-tools")
+-- require("dart-tools")

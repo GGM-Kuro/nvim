@@ -12,7 +12,6 @@ return {
       "lua",
       "luadoc",
       "python",
-      "dart",
       "vim",
       "regex"
     },

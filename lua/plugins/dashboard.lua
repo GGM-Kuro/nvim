@@ -4,6 +4,7 @@ return{
     dependencies = 'stevearc/oil.nvim',
     opts = function ()
       local dashboard = require 'kuro.dashboard'
+      Lazy = require'lazy'
       return dashboard
     end,
     config = function(_, dashboard)
@@ -13,7 +14,7 @@ return{
             vim.api.nvim_create_autocmd("User", {
                 pattern = "AlphaReady",
                 callback = function()
-                    require("lazy").show()
+                    Lazy.show()
                 end,
             })
         end
@@ -23,7 +24,7 @@ return{
         vim.api.nvim_create_autocmd("User", {
             pattern = "LazyVimStarted",
             callback = function()
-                local stats = require("lazy").stats()
+                local stats = Lazy.stats()
                 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
                 dashboard.section.footer.val = "⚡ Neovim loaded " ..
                     stats.count .. " plugins in " .. ms .. "ms\n\t\t\t Good Code Monkey "
