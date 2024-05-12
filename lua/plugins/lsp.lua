@@ -2,9 +2,11 @@ return {
   {
     "williamboman/mason.nvim",
     lazy = false,
-    config = function()
-      require("mason").setup()
-    end,
+    opts = {
+      ui = {
+        border = "rounded",
+      }
+    }
   },
   {
     -- bridges the gap between mason and lspconfig
@@ -31,7 +33,9 @@ return {
           'nvim-lua/plenary.nvim',
           'stevearc/dressing.nvim', -- optional for vim.ui.select
         },
-        config = true,
+        config = function ()
+          require'kuro.flutter'
+        end
       }
     },
   },

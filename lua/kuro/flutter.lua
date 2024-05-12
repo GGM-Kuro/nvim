@@ -1,3 +1,4 @@
+require('flutter-tools').setup({})
 require('flutter-tools').setup({
     lsp = {
         color = {
@@ -5,7 +6,7 @@ require('flutter-tools').setup({
             enabled = true,         -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
             background = false,     -- highlight the background
             background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
-            foreground = false,     -- highlight the foreground
+            foreground = true,     -- highlight the foreground
             virtual_text = true,    -- show the highlight using virtual text
             virtual_text_str = "■", -- the virtual text character to highlight
         },
@@ -29,6 +30,15 @@ require('flutter-tools').setup({
         enabled = true,
     },
 
+    keys = {
+        { "<leader>fx", ":FlutterRun<cr>",         desc = "run" },
+        { "<leader>fd", ":FlutterDevices<cr>",     desc = "devices" },
+        { "<leader>fe", ":FlutterEmulators<cr>",   desc = "emulators" },
+        { "<leader>fq", ":FlutterQuit<cr>",        desc = "quit" },
+        { "<leader>fr", ":FlutterReload<cr>",      desc = "hotReload" },
+        { "<leader>fR", ":FlutterRestart<cr>",     desc = "hotRestart" },
+        { "<leader>fD", ":FlutterVisualDebug<cr>", desc = "debug" }
+    },
 
     closing_tags = {
         highlight = "ErrorMsg", -- highlight for the closing tag
