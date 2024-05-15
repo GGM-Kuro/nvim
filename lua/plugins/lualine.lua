@@ -4,6 +4,11 @@ return {
   opts = {
     options = {
       globalstatus = true,
+    disabled_filetypes = {
+      "dapui_watches", "dapui_breakpoints",
+      "dapui_scopes", "dapui_console",
+      "dapui_stacks", "dap-repl"
+    }
     },
     sections = {
       lualine_c = { { "filename", file_status = true, path = 1, } },

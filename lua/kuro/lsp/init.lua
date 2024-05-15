@@ -2,11 +2,12 @@ local lsp_config = require("lspconfig")
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    -- dart sdk ships with LSP
-    "astro",
-    "tailwindcss",
-    "tsserver",
-    "lua_ls",
+    -- -- dart sdk ships with LSP
+    -- "astro",
+    -- "tailwindcss",
+    -- "clangd",
+    -- "tsserver",
+    -- "lua_ls",
   },
 })
 
@@ -29,10 +30,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<C-.>", vim.lsp.buf.code_action, opts)
+
     vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", ";r", vim.lsp.buf.rename, opts)
+
   end,
 })
 
@@ -46,24 +50,28 @@ local dartExcludedFolders = {
   vim.fn.expand("$HOME/.pub-cache"),
 }
 
-lsp_config["dcmls"].setup({
-  capabilities = capabilities,
-  cmd = {
-    "dcm",
-    "start-server",
-  },
-  filetypes = { "dart", "yaml" },
-  settings = {
-    dart = {
-      analysisExcludedFolders = dartExcludedFolders,
-    },
-  },
-})
+-- lsp_config["dcmls"].setup({
+--   capabilities = capabilities,
+--   cmd = {
+--     "dcm",
+--     "start-server",
+--     "--clien=neovim"
+--   },
+--   filetypes = { "dart", "yaml" },
+--   root_dir= lsp_config.util.root_pattern("pubspec.yaml"),
+--   settings = {
+--     dart = {
+--       analysisExcludedFolders = dartExcludedFolders,
+--     },
+--   },
+-- })
 
 lsp_config["dartls"].setup({
   capabilities = capabilities,
   cmd = {
     "dart",
+    "run",
+    "--enable-analytics",
     "language-server",
     "--protocol=lsp",
   },
@@ -83,6 +91,14 @@ lsp_config["dartls"].setup({
       showTodos = true,
     },
   },
+})
+
+lsp_config.clangd.setup({
+  on_attach = function(client, bufnr)
+    client.server_capabilities.signatureHelpProvider = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
 })
 
 lsp_config.pyright.setup({
