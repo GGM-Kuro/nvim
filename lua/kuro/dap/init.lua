@@ -8,18 +8,22 @@ for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/kuro/dap/configs/*.l
 end
 
 -- Signs
-vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "▶", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapBreakpointRejected", { text = "🚫", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointCondition", { text = "❓", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapLogPoint", { text = "💬", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapLogPoint", { text = "󱂅", texthl = "", linehl = "", numhl = "" })
 
 -- UI structure
 dapui.setup {
   icons = { expanded = "▾", collapsed = "▸" },
+  controls = {
+    enabled = true
+  },
   layouts = {
     {
       elements = {
+        { "repl", size = 1, position = "bottom" },
         "scopes",
         "breakpoints",
         "stacks",
@@ -55,6 +59,7 @@ local hint = [[
  ^^                                                      _<Esc>_
 ]]
 
+-- TODO hola
 hydra {
   name = "dap",
   hint = hint,

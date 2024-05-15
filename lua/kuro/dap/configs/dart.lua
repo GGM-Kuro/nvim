@@ -8,7 +8,10 @@ dap.adapters.dart = {
   },
   sourceLanguages = { 'dart' },
   -- This command was introduced upstream in https://github.com/dart-lang/sdk/commit/b68ccc9a
-  args = {"debug_adapter"}
+  args = {
+    "--enable-asserts",
+    "debug_adapter"
+  }
 }
 dap.configurations.dart = {
   {

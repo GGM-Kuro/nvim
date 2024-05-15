@@ -2,16 +2,17 @@ return {
   {
     "williamboman/mason.nvim",
     lazy = false,
+    config = true,
     opts = {
       ui = {
         border = "rounded",
       }
-    }
-  },
-  {
-    -- bridges the gap between mason and lspconfig
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
+    },
+    dependencies = {
+      -- bridges the gap between mason and lspconfig
+      "williamboman/mason-lspconfig.nvim",
+      lazy = false,
+    },
   },
   {
     "neovim/nvim-lspconfig",
@@ -29,6 +30,15 @@ return {
       {
         'akinsho/flutter-tools.nvim',
         lazy = false,
+        keys = {
+          { ";fx", ":FlutterRun<cr>",         desc = "run" },
+          { ";fd", ":FlutterDevices<cr>",     desc = "devices" },
+          { ";fe", ":FlutterEmulators<cr>",   desc = "emulators" },
+          { ";fq", ":FlutterQuit<cr>",        desc = "quit" },
+          { ";fr", ":FlutterReload<cr>",      desc = "hotReload" },
+          { ";fR", ":FlutterRestart<cr>",     desc = "hotRestart" },
+          { ";fD", ":FlutterVisualDebug<cr>", desc = "debug" }
+        },
         dependencies = {
           'nvim-lua/plenary.nvim',
           'stevearc/dressing.nvim', -- optional for vim.ui.select
