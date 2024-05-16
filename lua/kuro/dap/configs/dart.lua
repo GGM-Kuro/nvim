@@ -4,7 +4,7 @@ dap.adapters.dart = {
   type = "executable",
   command = "dart",
   env = {
-    ['DART_SDK_HOME'] = "$DART_HOME/bin/dart"
+    ['DART_SDK_HOME'] = "$DART_HOME/bin/"
   },
   sourceLanguages = { 'dart' },
   -- This command was introduced upstream in https://github.com/dart-lang/sdk/commit/b68ccc9a

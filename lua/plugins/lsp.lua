@@ -37,7 +37,8 @@ return {
           { ";fq", ":FlutterQuit<cr>",        desc = "quit" },
           { ";fr", ":FlutterReload<cr>",      desc = "hotReload" },
           { ";fR", ":FlutterRestart<cr>",     desc = "hotRestart" },
-          { ";fD", ":FlutterVisualDebug<cr>", desc = "debug" }
+          { ";fD", ":FlutterVisualDebug<cr>", desc = "debug" },
+          { ";s", ":w<cr> :FlutterReload<cr>", desc = "" }
         },
         dependencies = {
           'nvim-lua/plenary.nvim',
