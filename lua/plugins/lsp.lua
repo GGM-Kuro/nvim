@@ -23,10 +23,8 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "onsails/lspkind.nvim",
-
+      "folke/lsp-colors.nvim",
       { "j-hui/fidget.nvim", tag = "legacy" },
-      -- support for dart hot reload on save
-      -- "RobertBrunhage/dart-tools.nvim",
       {
         'akinsho/flutter-tools.nvim',
         lazy = false,
@@ -38,9 +36,9 @@ return {
           { ";fr", ":FlutterReload<cr>",      desc = "hotReload" },
           { ";fR", ":FlutterRestart<cr>",     desc = "hotRestart" },
           { ";fD", ":FlutterVisualDebug<cr>", desc = "debug" },
-          { ";s", ":w<cr> :FlutterReload<cr>", desc = "" }
         },
         dependencies = {
+          "RobertBrunhage/dart-tools.nvim",
           'nvim-lua/plenary.nvim',
           'stevearc/dressing.nvim', -- optional for vim.ui.select
         },

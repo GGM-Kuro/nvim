@@ -25,9 +25,9 @@ cmp.setup({
     end,
   },
   sources = {
-    { name = "nvim_lua" },
-    { name = "nvim_lsp" },
     { name = "codeium" },
+    { name = "nvim_lsp" },
+    { name = "nvim_lua" },
     { name = "path" },
     { name = "luasnip" },
     {

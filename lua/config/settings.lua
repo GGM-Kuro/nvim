@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 vim.o.termguicolors = true
 
 vim.opt.guicursor = ""
+-- vim.opt.cursorline = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

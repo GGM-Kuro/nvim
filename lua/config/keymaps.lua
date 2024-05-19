@@ -20,11 +20,15 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "" })
 vim.keymap.set( "n", "<C-d>", "<C-d>zz", { desc = "Half screen up center cursor" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half screen down center cursor" })
 
+
+
+vim.keymap.set("n", "<C-a>", "ggVG", { desc = "select all" })
+
 vim.keymap.set("n", "<leader>bq", '<Esc>:%bdelete|edit #|normal`"<Return>',
   { desc = "Delete other buffers" }
 )
 
-vim.api.nvim_set_keymap('n', ';t', [[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]], { silent = true })
+vim.api.nvim_set_keymap('n', ';t', [[:<C-u>call append(line("."), repeat([""], v:count1))<CR>]], { silent = true })
 vim.api.nvim_set_keymap('n', ';n', [[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]], { silent = true })
 
 -- greatest remap ever

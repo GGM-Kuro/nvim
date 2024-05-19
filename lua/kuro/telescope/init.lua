@@ -59,8 +59,6 @@ M.find_nvim_plugin = function()
     cwd = string.format('%s%s', userPath, "nvim/lua/plugins"),
     attach_mappings = function(_, map)
       map("i", "<C-y>", my_actions.create_plugin)
-      map("i", "<C-d>", my_actions.disable_plugin)
-      map("i", "<C-e>", my_actions.enable_plugin)
 
       return true
     end,
@@ -148,6 +146,15 @@ function M.file_browser(opts)
   }
 
   return telescope_ext.file_browser.file_browser(opts)
+end
+
+
+
+M.file_browser_picker = function()
+  builtin.find_files {
+    prompt_title = "< Project Files >",
+    cwd = os.getenv('PWD'),
+  }
 end
 
 return setmetatable({}, {

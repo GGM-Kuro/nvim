@@ -3,6 +3,7 @@ return{
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     {"-","<CMD>Oil <CR>", desc = "Oil Float"},
+    {"_","<CMD>echo $PWD | Oil<CR>", desc = "Oil Float"},
   },
   config = function ()
     require"kuro.oil"

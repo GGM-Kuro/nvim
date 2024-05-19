@@ -2,7 +2,8 @@ return{
   'brenoprata10/nvim-highlight-colors',
   config = true,
   opts= {
-    render = "foreground",
+    virtual_symbol = '󰆦',
+    render = "virtual",
     enable_tailwind = true,
   },
 }
