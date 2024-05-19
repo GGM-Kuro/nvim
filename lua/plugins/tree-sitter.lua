@@ -10,6 +10,11 @@ return {
   opts = {
     ensure_installed = {
       "lua",
+      "lua",
+      "xml",
+      "http",
+      "json",
+      "graphql",
       "luadoc",
       "python",
       "vim",
