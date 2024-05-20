@@ -28,8 +28,9 @@ vim.keymap.set("n", "<leader>bq", '<Esc>:%bdelete|edit #|normal`"<Return>',
   { desc = "Delete other buffers" }
 )
 
-vim.api.nvim_set_keymap('n', ';t', [[:<C-u>call append(line("."), repeat([""], v:count1))<CR>]], { silent = true })
-vim.api.nvim_set_keymap('n', ';n', [[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]], { silent = true })
+
+vim.api.nvim_set_keymap('n', ';t', [[:<C-u>call append(line("."), repeat([""], v:count1))<CR>]], { desc= " new line ",silent = true })
+vim.api.nvim_set_keymap('n', ';n', [[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]], { desc= " new line ", silent = true })
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -44,7 +45,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<c-f>", vim.lsp.buf.format)
+vim.keymap.set("n", "<c-f>", vim.lsp.buf.format, {desc = "Format Document"})
 
 
 vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
@@ -58,6 +59,6 @@ vim.keymap.set("n", "<leader>s?", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gcI<Left><Left
 
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader><leader>", function()
+vim.keymap.set("n", "<leader><leader>s", function()
   vim.cmd("so")
 end)
