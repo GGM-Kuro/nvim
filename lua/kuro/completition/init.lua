@@ -25,11 +25,11 @@ cmp.setup({
     end,
   },
   sources = {
-    { name = "codeium" },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "path" },
     { name = "luasnip" },
+    { name = "codeium" },
     {
       name = "buffer",
       keyword_length = 4,
@@ -48,15 +48,16 @@ cmp.setup({
     },
   },
   formatting = {
+    fields = {'menu','abbr','kind'},
     format = lspkind.cmp_format {
       menu = {
         buffer = "[buf]",
-        nvim_lsp = "[ ]",
-        codeium = "[ﮧ ]",
+        nvim_lsp = "[  ]",
+        codeium = "[ﮧ  ]",
         nvim_lua = "[api]",
-        path = "[path]",
-        luasnip = "[snip]",
-        ["vim-dadbod-completion"] = "[DB]",
+        path = "[pth]",
+        luasnip = "[snp]",
+        ["vim-dadbod-completion"] = "[DB ]",
       },
     },
   },

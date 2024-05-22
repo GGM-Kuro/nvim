@@ -4,6 +4,10 @@ return {
     lazy = false,
     config = true,
     opts = {
+      servers = {
+        marksman = {},
+      },
+      ensure_istalled = { "markdownlint", "marksman" },
       ui = {
         border = "rounded",
       }
@@ -17,6 +21,11 @@ return {
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    opts = {
+    servers = {
+      marksman = {},
+    }
+    },
     config = function()
       require 'kuro.lsp'
     end,
@@ -24,28 +33,9 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "onsails/lspkind.nvim",
       "folke/lsp-colors.nvim",
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
       { "j-hui/fidget.nvim", tag = "legacy" },
-      {
-        'akinsho/flutter-tools.nvim',
-        lazy = false,
-        keys = {
-          { ";fx", ":FlutterRun<cr>",         desc = "run" },
-          { ";fd", ":FlutterDevices<cr>",     desc = "devices" },
-          { ";fe", ":FlutterEmulators<cr>",   desc = "emulators" },
-          { ";fq", ":FlutterQuit<cr>",        desc = "quit" },
-          { ";fr", ":FlutterReload<cr>",      desc = "hotReload" },
-          { ";fR", ":FlutterRestart<cr>",     desc = "hotRestart" },
-          { ";fD", ":FlutterVisualDebug<cr>", desc = "debug" },
-        },
-        dependencies = {
-          "RobertBrunhage/dart-tools.nvim",
-          'nvim-lua/plenary.nvim',
-          'stevearc/dressing.nvim', -- optional for vim.ui.select
-        },
-        config = function ()
-          require'kuro.flutter'
-        end
-      }
-    },
+    }
   },
 }

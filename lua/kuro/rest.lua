@@ -74,8 +74,4 @@ require 'rest-nvim'.setup {
       "<leader>rl", "<cmd>Rest run last<cr>", "Re-run latest request",
     },
   }
-  ---
-  ---```
-  --
-  -- keybinds = {},
 }

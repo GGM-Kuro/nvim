@@ -53,6 +53,17 @@ M.find_nvim_config = function()
   }
 end
 
+M.find_nvim_plugin_config = function()
+  builtin.find_files {
+    prompt_title = "<  Kuro >",
+    cwd = string.format('%s%s', userPath, "nvim/lua/kuro"),
+    attach_mappings = function(_, map)
+      map("i", "<C-y>", my_actions.create_plugin)
+
+      return true
+    end,
+  }
+end
 M.find_nvim_plugin = function()
   builtin.find_files {
     prompt_title = "<  Plugins >",

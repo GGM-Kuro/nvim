@@ -6,7 +6,13 @@ require("obsidian").setup({
       overrides = {
         notes_subdir = 'Input'
       }
-    },
+    }, {
+    name = "Aethernum",
+    path = "$HOME/Desktop/kuro/Notes/Aethernum",
+    overrides = {
+      notes_subdir = '📥entrada'
+    }
+  }
   },
   completion = {
     nvim_cmp = true,
@@ -18,14 +24,14 @@ require("obsidian").setup({
       action = function()
         return require("obsidian").util.gf_passthrough()
       end,
-      opts = { noremap = false, expr = true, buffer = true, desc="Follow" },
+      opts = { noremap = false, expr = true, buffer = true, desc = "Follow" },
     },
     -- Toggle check-boxes "obsidian done"
     [";od"] = {
       action = function()
         return require("obsidian").util.toggle_checkbox()
       end,
-      opts = { buffer = true , desc = "Toggle checkbox"},
+      opts = { buffer = true, desc = "Toggle checkbox" },
     },
     -- Create a new newsletter issue
     -- [";onn"] = {
@@ -38,7 +44,7 @@ require("obsidian").setup({
       action = function()
         return require("obsidian").util.insert_template("Newsletter-Issue")
       end,
-      opts = { buffer = true, desc = "Insert Template"},
+      opts = { buffer = true, desc = "Insert Template" },
     },
   },
   note_frontmatter_func = function(note)

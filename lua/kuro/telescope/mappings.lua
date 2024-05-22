@@ -29,11 +29,13 @@ end
 
 -- Nvim
 map_tele("<leader>ep", "find_nvim_plugin", { desc = "Search Neovim plugins" })
+map_tele("<leader>ec", "find_nvim_plugin_config", { desc = "Neovim plugins config" })
 map_tele("<leader>en", "find_nvim_config", { desc = "Search in nvim directory" })
 
 -- Find
 map_tele("<leader>fw", "grep_word", { desc = "Grep word under cursor" })
 map_tele("<leader>fs", "grep_string", { desc = "Grep provided input string" })
+map_tele("<leader>fp", "file_browser_picker", { desc = "Project files" })
 map_tele("<leader>fb", "buffers", { desc = "Open buffers" })
 
 -- Explorer

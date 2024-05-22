@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {  desc = "Go to definition"}, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "<C-.>", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, opts)
 
     vim.keymap.set("n", "gr", vim.lsp.buf.references,{  desc = "Go to references"}, opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {  desc = "Lsp Rename"}, opts)
@@ -93,7 +93,7 @@ lsp_config.astro.setup({
 lsp_config.tailwindcss.setup({
   capabilities = capabilities,
 })
-
+lsp_config.marksman.setup({})
 lsp_config.tsserver.setup({
   capabilities = capabilities,
 })

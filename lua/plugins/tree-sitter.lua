@@ -15,6 +15,8 @@ return {
       "http",
       "json",
       "graphql",
+      "markdown",
+      "markdown_inline",
       "luadoc",
       "python",
       "vim",

@@ -21,6 +21,7 @@ vim.keymap.set( "n", "<C-d>", "<C-d>zz", { desc = "Half screen up center cursor"
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half screen down center cursor" })
 
 
+vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, { desc = "Code Action" })
 
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "select all" })
 
