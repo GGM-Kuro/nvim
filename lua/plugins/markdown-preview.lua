@@ -3,7 +3,7 @@ return {
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
   build = "cd app && yarn install",
   keys = { {
-    ";p",
+    ";op",
     ":MarkdownPreviewToggle<CR>",
     desc = " Markdown Preview Toggle"
   } },

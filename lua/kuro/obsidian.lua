@@ -18,38 +18,51 @@ require("obsidian").setup({
     nvim_cmp = true,
     min_chars = 2,
   },
+  attachments = {
+    img_folder = "Archive",
+  },
+  daily_notes = {
+    -- Optional, if you keep daily notes in a separate directory.
+    folder = "$HOME/Desktop/kuro/Notes/Journal/",
+    -- Optional, if you want to change the date format for the ID of daily notes.
+    date_format = "%Y-%m-%d",
+    -- Optional, if you want to change the date format of the default alias of daily notes.
+    alias_format = "%B %-d, %Y",
+    -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+    template = nil
+  },
   mappings = {
     -- "Obsidian follow"
     [";of"] = {
-      action = function()
-        return require("obsidian").util.gf_passthrough()
-      end,
-      opts = { noremap = false, expr = true, buffer = true, desc = "Follow" },
+      action = ":ObsidianFollowLink<CR>",
+      opts = { noremap = false, expr = true, buffer = true , desc = "Follow link"},
     },
     -- Toggle check-boxes "obsidian done"
     [";od"] = {
-      action = function()
-        return require("obsidian").util.toggle_checkbox()
-      end,
-      opts = { buffer = true, desc = "Toggle checkbox" },
+      action = ":ObsidianToggleCheckbox<CR>",
+      opts = { buffer = true , desc = "Toggle checkbox"},
+    },
+    [";ow"] = {
+      action = ":ObsidianWorkspace<CR>",
+      opts = { buffer = true , desc = "Change workspace"},
+    },
+    [";ot"] = {
+      action = ":ObsidianToday<CR>",
+      opts = { buffer = true, desc = "Open Today's note"},
     },
     -- Create a new newsletter issue
-    -- [";onn"] = {
-    --   action = function()
-    --     return require("obsidian").commands.new_note("Newsletter-Issue")
-    --   end,
-    --   opts = { buffer = true },
-    -- },
-    [";ot"] = {
-      action = function()
-        return require("obsidian").util.insert_template("Newsletter-Issue")
-      end,
-      opts = { buffer = true, desc = "Insert Template" },
+    [";onn"] = {
+      action = ":ObsidianNew<CR>",
+      opts = { buffer = true , desc = "New note"},
+    },
+    [";ont"] = {
+      action = ":ObsidianTemplate<CR>",
+      opts = { buffer = true , desc = "New template"},
     },
   },
   note_frontmatter_func = function(note)
     -- This is equivalent to the default frontmatter function.
-    local out = { id = note.id, aliases = note.aliases, tags = note.tags, area = "", project = "" }
+    local out = { id = note.id, aliases = note.aliases, tags = note.tags }
 
     -- `note.metadata` contains any manually added fields in the frontmatter.
     -- So here we just make sure those fields are kept in the frontmatter.
@@ -81,7 +94,8 @@ require("obsidian").setup({
   templates = {
     subdir = "Templates",
     date_format = "%Y-%m-%d-%a",
-    time_format = "%H:%M",
+    gtime_format = "%H:%M",
     tags = "Input",
   },
-})
+}
+)
