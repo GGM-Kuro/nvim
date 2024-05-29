@@ -1,15 +1,46 @@
 local cmp = require "cmp"
 local lspkind = require "lspkind"
+local luasnip = require "luasnip"
 local compare = require "cmp.config.compare"
 local cmp_mappings = cmp.mapping.preset.insert({
-  ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+  ["<C-d>"] = cmp.mapping.scroll_docs(-4),
   ["<C-f>"] = cmp.mapping.scroll_docs(4),
-  ["<C-CR>"] = cmp.mapping.complete(),
-  ["<C-e>"] = cmp.mapping.abort(),
+  ["<C-space>"] = cmp.mapping.complete(),
+  ["<C-e>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.abort()
+      elseif luasnip.choice_active() then
+        luasnip.change_choice(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   ["<C-y>"] = cmp.mapping.confirm({
     select = true,
-    behavior = cmp.ConfirmBehavior.Replace
+    behavior = cmp.ConfirmBehavior.Select
   }),
+  ["<C-t>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item({
+        behavior = cmp.SelectBehavior.Select
+      })
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+  ["<C-n>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item({
+        behavior = cmp.SelectBehavior.Select
+      })
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
 })
 
 -- disable completion with tab
@@ -69,6 +100,11 @@ cmp.setup({
     },
   },
 
+  experimental = {
+    ghost_text = {
+      hl_group = "LspCodeLens",
+    },
+  },
 
 
   mapping = cmp_mappings,

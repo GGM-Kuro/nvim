@@ -15,14 +15,15 @@ return {
 		-- Snippets engine
 		{
 			"L3MON4D3/LuaSnip",
-      main =  'kuro.luasnip',
-      config = true,
+      config = function ()
+        require "kuro.luasnip"
+      end,
 			dependencies = {
-
 				"saadparwaiz1/cmp_luasnip",
 				-- snippets
 				"rafamadriz/friendly-snippets",
 			},
 		},
+    "mattn/emmet-vim",
 	},
 }

@@ -15,8 +15,8 @@ require("mason-lspconfig").setup({
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev , { desc = "previous diagnostic"})
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next,{ desc = "next diagnostic"})
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "previous diagnostic" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "next diagnostic" })
 vim.keymap.set("n", "<leader>dl", vim.diagnostic.setqflist)
 
 
@@ -25,14 +25,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local opts = { buffer = ev.buf }
 
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {  desc = "Go to definition"}, opts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" }, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, opts)
 
-    vim.keymap.set("n", "gr", vim.lsp.buf.references,{  desc = "Go to references"}, opts)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {  desc = "Lsp Rename"}, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" }, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Lsp Rename" }, opts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-
   end,
 })
 
@@ -73,6 +72,15 @@ lsp_config["dartls"].setup({
   },
 })
 
+lsp_config.html.setup{
+  capabilities = capabilities,
+  filetypes = { "html", "htmldjango" },
+}
+
+lsp_config.htmx.setup({
+  capabilities = capabilities,
+  filetypes = { "html", "htmldjango" },
+})
 
 lsp_config.clangd.setup({
   on_attach = function(client, bufnr)
@@ -86,12 +94,19 @@ lsp_config.pyright.setup({
   capabilities = capabilities,
 })
 
+lsp_config.jinja_lsp.setup({
+  capabilities = capabilities,
+  filetypes = { "html", "htmldjango" },
+})
+
 lsp_config.astro.setup({
   capabilities = capabilities,
 })
 
 lsp_config.tailwindcss.setup({
   capabilities = capabilities,
+  filetypes = { "astro", "html", "htmldjango", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+
 })
 lsp_config.marksman.setup({})
 lsp_config.tsserver.setup({
@@ -111,4 +126,3 @@ lsp_config.lua_ls.setup({
 
 -- Tooltip for the lsp in bottom right
 require("fidget").setup({})
-

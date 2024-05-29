@@ -2,6 +2,7 @@ local ls = require "luasnip"
 local types = require "luasnip.util.types"
 ls.filetype_extend('py', { 'django' })
 ls.filetype_extend('python', { 'django' })
+ls.filetype_extend('html', { 'htmldjango' })
 ls.filetype_extend('dart', { 'flutter' })
 
 local M = {}
@@ -29,19 +30,20 @@ function M.setup()
 
   -- <c-k> is my expansion key
   -- this will expand the current item or jump to the next item within the snippet.
-  vim.keymap.set({ "i", "s" }, "<C-k>", function()
-    if ls.expand_or_jumpable() then
-      ls.expand_or_jump()
-    end
-  end, { silent = true })
+  -- vim.keymap.set({ "i", "s" }, "<C-k>", function()
+  --   if ls.expand_or_jumpable() then
+  --     ls.expand_or_jump()
+  --   end
+  -- end, { silent = true })
 
   -- <c-j> is my jump backwards key.
   -- this always moves to the previous item within the snippet
-  vim.keymap.set({ "i", "s" }, "<C-j>", function()
-    if ls.jumpable(-1) then
-      ls.jump(-1)
-    end
-  end, { silent = true })
+  -- vim.keymap.set({ "i", "s" }, "<C-j>", function()
+  --   if ls.jumpable(-1) then
+  --
+  --     ls.jump(-1)
+  --   end
+  -- end, { silent = true })
 
   -- <c-l> is selecting within a list of options.
   -- This is useful for choice nodes (introduced in the forthcoming episode 2)
