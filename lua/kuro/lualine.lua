@@ -1,3 +1,11 @@
+local function RecordingStatus()
+  if vim.fn.reg_recording() ~= '' then
+    return ' (@' .. vim.fn.reg_recording() .. ')'
+  end
+  return ''
+end
+
+
 require 'lualine'.setup {
   options = {
     section_separators = "",
@@ -9,7 +17,7 @@ require 'lualine'.setup {
     }
   },
   sections = {
-    lualine_a = { 'mode' },
+    lualine_a = { 'mode', { RecordingStatus, color = { gui = 'bold' }}},
     lualine_b = { 'branch' },
     lualine_c = { {
       "filename",
