@@ -34,8 +34,10 @@ require("obsidian").setup({
   mappings = {
     -- "Obsidian follow"
     [";of"] = {
-      action = ":ObsidianFollowLink<CR>",
-      opts = { noremap = false, expr = true, buffer = true , desc = "Follow link"},
+      action = function()
+        return require("obsidian").util.gf_passthrough()
+      end,
+      opts = { noremap = false, expr = true, buffer = true , "Follow Link"},
     },
     -- Toggle check-boxes "obsidian done"
     [";od"] = {

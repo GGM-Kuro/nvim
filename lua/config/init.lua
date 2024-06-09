@@ -14,12 +14,16 @@ function R(name)
   require("plenary.reload").reload_module(name)
 end
 
-vim.api.nvim_exec([[
-  autocmd Filetype netrw nnoremap <buffer> h <Left>
-  autocmd Filetype netrw nnoremap <buffer> t <Down>
-  autocmd Filetype netrw nnoremap <buffer> n <Up>
-  autocmd Filetype netrw nnoremap <buffer> s <Right>
-  ]],false)
+vim.api.nvim_create_autocmd('FileType', {
+  group = KuroGroup,
+  pattern = 'netrw',
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, 'n', 'h', '<Left>', { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(0, 'n', 't', '<Down>', { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(0, 'n', 'n', '<Up>', { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(0, 'n', 's', '<Right>', { noremap = true, silent = true })
+  end,
+})
 
 
 autocmd('TextYankPost', {

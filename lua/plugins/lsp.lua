@@ -22,9 +22,9 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     opts = {
-    servers = {
-      marksman = {},
-    }
+      servers = {
+        marksman = {},
+      }
     },
     config = function()
       require 'kuro.lsp'

@@ -10,14 +10,16 @@ vim.keymap.set('n', '<leader>bd', ':bd!<cr>', { desc = "Close current buffer" })
 vim.keymap.set({ 'n', 'x' }, '<leader>rr', ':source %<cr>', { desc = "Source the current file" })
 
 vim.keymap.set('v', '<', '<gv', { desc = "after tab out re-select the same" })
+
 vim.keymap.set('v', '>', '>gv', { desc = "after tab in re-select the same" })
+
 
 vim.keymap.set('n', '.', 'nzzzv', { desc = "NextResult->Middle " })
 vim.keymap.set('n', ',', 'Nzzzv', { desc = "PrevResult->Middle " })
 vim.keymap.set('n', '>', '.', { desc = "repeat" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "" })
-vim.keymap.set( "n", "<C-d>", "<C-d>zz", { desc = "Half screen up center cursor" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half screen up center cursor" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half screen down center cursor" })
 
 
@@ -30,8 +32,10 @@ vim.keymap.set("n", "<leader>bq", '<Esc>:%bdelete|edit #|normal`"<Return>',
 )
 
 
-vim.api.nvim_set_keymap('n', ';t', [[:<C-u>call append(line("."), repeat([""], v:count1))<CR>]], { desc= " new line ",silent = true })
-vim.api.nvim_set_keymap('n', ';n', [[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]], { desc= " new line ", silent = true })
+vim.api.nvim_set_keymap('n', ';t', [[:<C-u>call append(line("."), repeat([""], v:count1))<CR>]],
+  { desc = " new line ", silent = true })
+vim.api.nvim_set_keymap('n', ';n', [[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]],
+  { desc = " new line ", silent = true })
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -46,20 +50,18 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<c-f>", vim.lsp.buf.format, {desc = "Format Document"})
-
 
 vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-                { desc = 'Epic replace'})
+  { desc = 'Epic replace' })
 
 vim.keymap.set("n", "<leader>sl", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-                { desc = 'Replace in current line' })
+  { desc = 'Replace in current line' })
 
 vim.keymap.set("n", "<leader>s?", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gcI<Left><Left><Left>]],
-                { desc = 'Replace all with confirmation' })
+  { desc = 'Replace all with confirmation' })
 
 vim.keymap.set("n", "<leader>sf", [[:.,$s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-                { desc = 'Replace from cursor to end of file' })
+  { desc = 'Replace from cursor to end of file' })
 
 
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })

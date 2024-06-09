@@ -89,10 +89,6 @@ function M.grep_word()
   builtin.grep_string { search = vim.fn.expand "<cword>" }
 end
 
-function M.yank_history()
-  builtin.yank_history()
-end
-
 function M.find_symbol()
   vim.ui.input({ prompt = "Symbol for > " }, function(input)
     if input == nil then

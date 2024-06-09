@@ -61,6 +61,7 @@ cmp.setup({
     { name = "path" },
     { name = "luasnip" },
     { name = "codeium" },
+    { name = "emoji" },
     {
       name = "buffer",
       keyword_length = 4,

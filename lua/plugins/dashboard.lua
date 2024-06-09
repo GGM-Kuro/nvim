@@ -1,5 +1,6 @@
 return{
     "goolord/alpha-nvim",
+    enabled = true,
     event = "VimEnter",
     dependencies = 'stevearc/oil.nvim',
     opts = function ()

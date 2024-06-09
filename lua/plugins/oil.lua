@@ -4,6 +4,7 @@ return{
   config = true,
   keys = {
     {"-","<CMD>Oil <CR>", desc = "Oil Float"},
-    {"_","<CMD>echo $PWD | Oil<CR>", desc = "Oil Float"},
+    {"_", "<CMD>lua require('oil').open(vim.fn.expand('$PWD'))<CR>", desc = "Oil Float"}
+
   },
 }

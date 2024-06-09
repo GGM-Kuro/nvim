@@ -26,7 +26,7 @@ dashboard.section.buttons.val = {
   dashboard.button(".", " " .. " Dotfiles", ":Telescope file_browser path=$DOTFILES_PATH <CR>"),
   -- dashboard.button("p", " " .. " Repos", ":Telescope file_browser path=$Proyects <CR>"),
   dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
-  dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+  dashboard.button("z", " " .. " Quit", ":qa<CR>"),
 }
 for _, button in ipairs(dashboard.section.buttons.val) do
   button.opts.hl = "AlphaButtons"

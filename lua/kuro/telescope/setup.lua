@@ -57,7 +57,7 @@ require("telescope").setup {
                 ["<C-h>"] = actions.select_horizontal,
                 ["<C-s>"] = actions.select_vertical,
                 ["<C-n>"] = "move_selection_next",
-                ["<C-e>"] = "move_selection_previous",
+                ["<C-t>"] = "move_selection_previous",
                 ["<C-y>"] = set_prompt_to_entry_value,
                 -- These are new :)
                 ["<M-p>"] = action_layout.toggle_preview,
