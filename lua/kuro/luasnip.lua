@@ -1,12 +1,14 @@
 local ls = require "luasnip"
 local types = require "luasnip.util.types"
+
 ls.filetype_extend('py', { 'django' })
+ls.filetype_extend('lua', { 'lua' })
 ls.filetype_extend('python', { 'django' })
+ls.filetype_extend('htmldjango', { 'django','htmldjango' })
 ls.filetype_extend('html', { 'htmldjango' })
 ls.filetype_extend('dart', { 'flutter' })
 
 local M = {}
-
 function M.setup()
   ls.config.set_config {
     -- This tells LuaSnip to remember to keep around the last snippet.

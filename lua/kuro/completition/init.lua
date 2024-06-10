@@ -2,6 +2,10 @@ local cmp = require "cmp"
 local lspkind = require "lspkind"
 local luasnip = require "luasnip"
 local compare = require "cmp.config.compare"
+
+luasnip.filetype_extend('htmldjango', {'django'})
+
+
 local cmp_mappings = cmp.mapping.preset.insert({
   ["<C-d>"] = cmp.mapping.scroll_docs(-4),
   ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -52,15 +56,19 @@ cmp_mappings["<S-Tab>"] = vim.NIL
 cmp.setup({
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
+      vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
+
   sources = {
+    { name = "codeium" },
+    { name = "vim_snippets"},
+    { name = "luasnip"  },
+    { name = "ultisnips"  },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "path" },
-    { name = "luasnip" },
-    { name = "codeium" },
     { name = "emoji" },
     {
       name = "buffer",
@@ -89,6 +97,7 @@ cmp.setup({
         nvim_lua = "[api]",
         path = "[pth]",
         luasnip = "[snp]",
+        ultisnips = "[usn]",
         ["vim-dadbod-completion"] = "[DB ]",
       },
     },
@@ -102,9 +111,7 @@ cmp.setup({
   },
 
   experimental = {
-    ghost_text = {
-      hl_group = "LspCodeLens",
-    },
+    ghost_text = true
   },
 
 
@@ -130,6 +137,12 @@ cmp.setup.cmdline(":", {
   }),
 })
 
+luasnip.config.set_config({
+  history = true,
+  updateevents = "TextChanged,TextChangedI",
+})
+
 -- Snippets will load from LSP but this makes sure to
 -- load local and plugin snippets ASAP
 require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = {"/home/kuro/.local/share/nvim/lazy/vim-snippets/UltiSnips/htmldjango.snippets" }})
