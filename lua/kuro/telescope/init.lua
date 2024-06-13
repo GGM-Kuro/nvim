@@ -53,6 +53,13 @@ M.find_nvim_config = function()
   }
 end
 
+
+M.find_recent_files = function()
+  builtin.oldfiles {
+    prompt_title = "< 󱋡 Recent Files >",
+  }
+end
+
 M.find_nvim_plugin_config = function()
   builtin.find_files {
     prompt_title = "<  Kuro >",

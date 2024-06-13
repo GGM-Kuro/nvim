@@ -1,9 +1,8 @@
-local cmp = require "cmp"
-local lspkind = require "lspkind"
-local luasnip = require "luasnip"
-local compare = require "cmp.config.compare"
+local cmp, lspkind, luasnip, compare = require "cmp", require "lspkind",
+    require "luasnip", require "cmp.config.compare"
 
-luasnip.filetype_extend('htmldjango', {'django'})
+
+luasnip.filetype_extend('htmldjango', { 'django' })
 
 
 local cmp_mappings = cmp.mapping.preset.insert({
@@ -11,40 +10,40 @@ local cmp_mappings = cmp.mapping.preset.insert({
   ["<C-f>"] = cmp.mapping.scroll_docs(4),
   ["<C-space>"] = cmp.mapping.complete(),
   ["<C-e>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.abort()
-      elseif luasnip.choice_active() then
-        luasnip.change_choice(1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+    if cmp.visible() then
+      cmp.abort()
+    elseif luasnip.choice_active() then
+      luasnip.change_choice(1)
+    else
+      fallback()
+    end
+  end, { "i", "s" }),
   ["<C-y>"] = cmp.mapping.confirm({
     select = true,
     behavior = cmp.ConfirmBehavior.Select
   }),
   ["<C-t>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item({
+    if cmp.visible() then
+      cmp.select_prev_item({
         behavior = cmp.SelectBehavior.Select
       })
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+    elseif luasnip.expand_or_jumpable() then
+      luasnip.jump(-1)
+    else
+      fallback()
+    end
+  end, { "i", "s" }),
   ["<C-n>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item({
+    if cmp.visible() then
+      cmp.select_next_item({
         behavior = cmp.SelectBehavior.Select
       })
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+    elseif luasnip.expand_or_jumpable() then
+      luasnip.expand_or_jump()
+    else
+      fallback()
+    end
+  end, { "i", "s" }),
 })
 
 -- disable completion with tab
@@ -61,11 +60,18 @@ cmp.setup({
     end,
   },
 
+  window = {
+    completion = cmp.config.window.bordered({
+      winhighlight = "Normal:WinBar,FloatBorder:WinBar,Search:None,CursorLine:PmenuThumb",
+    }),
+    documentation = cmp.config.window.bordered(),
+  },
+
   sources = {
     { name = "codeium" },
-    { name = "vim_snippets"},
-    { name = "luasnip"  },
-    { name = "ultisnips"  },
+    { name = "vim_snippets" },
+    { name = "luasnip" },
+    { name = "ultisnips" },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "path" },
@@ -88,7 +94,7 @@ cmp.setup({
     },
   },
   formatting = {
-    fields = {'menu','abbr','kind'},
+    fields = { 'menu', 'abbr', 'kind' },
     format = lspkind.cmp_format {
       menu = {
         buffer = "[buf]",
@@ -145,4 +151,4 @@ luasnip.config.set_config({
 -- Snippets will load from LSP but this makes sure to
 -- load local and plugin snippets ASAP
 require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_vscode").lazy_load({ paths = {"/home/kuro/.local/share/nvim/lazy/vim-snippets/UltiSnips/htmldjango.snippets" }})
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/home/kuro/.local/share/nvim/lazy/vim-snippets/UltiSnips/htmldjango.snippets" } })

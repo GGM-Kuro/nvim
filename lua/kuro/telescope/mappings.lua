@@ -39,8 +39,8 @@ map_tele("<leader>fp", "file_browser_picker", { desc = "Project files" })
 map_tele("<leader>fb", "buffers", { desc = "Open buffers" })
 
 -- Explorer
-map_tele("<leader>er", "file_browser_relative", { desc = "Current directory" })
-map_tele("<leader>ee", "file_browser", { desc = "Project directory" })
+map_tele("<leader>ee", "file_browser_relative", { desc = "Current directory" })
+map_tele("<leader>er", "find_recent_files", { desc = "Recent files" })
 
 -- Utils
 map_tele("<leader>fh", "help_tags", { desc = "Neovim Help" })

@@ -11,9 +11,12 @@ require 'lualine'.setup {
     section_separators = "",
     globalstatus = true,
     disabled_filetypes = {
-      "dapui_watches", "dapui_breakpoints",
-      "dapui_scopes", "dapui_console",
-      "dapui_stacks", "dap-repl"
+      -- "dapui_watches",
+      -- "dapui_breakpoints",
+      -- "dapui_scopes",
+      -- "dapui_console",
+      -- "dapui_stacks",
+      "dap-repl"
     }
   },
   sections = {
@@ -26,7 +29,7 @@ require 'lualine'.setup {
         readonly = ' ',
         modified = ' '
       },
-      path = 4,
+      path = 3,
     } },
     lualine_x = {
       "diagnostics",

@@ -1,34 +1,42 @@
 return {
-  "mfussenegger/nvim-dap",
-  dependencies = {
-    "theHamsta/nvim-dap-virtual-text",
-    "rcarriga/nvim-dap-ui",
-    "mfussenegger/nvim-dap-python",
-    "leoluz/nvim-dap-go",
-    "mxsdev/nvim-dap-vscode-js",
-    "anuvyklack/hydra.nvim",
-    "nvim-telescope/telescope-dap.nvim",
-    "rcarriga/cmp-dap",
-  },
-  keys = { { "<c-x>" , desc = "Open Debug menu" } },
-  config = function()
-    require "kuro.dap"
-    local ok_telescope, telescope = pcall(require, "telescope")
-    if ok_telescope then
-      telescope.load_extension "dap"
-    end
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = {
+      {
+        "mfussenegger/nvim-dap",
+        config = function()
+          require 'kuro.dap'
+        end
 
-    local ok_cmp, cmp = pcall(require, "cmp")
-    if ok_cmp then
-      cmp.setup.filetype({ "dap-repl", "dapui_watches" }, {
-        sources = cmp.config.sources({
-          { name = "dap" },
-        }, {
-          { name = "buffer" },
-        }, {
-          { name = 'codeium' },
-        }),
-      })
+      },
+    }
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/neotest-python",
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter"
+    },
+    config =function ()
+
+        vim.cmd('echo "hola"')
+        local path = vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/')
+        require('neotest').setup({
+          adapters = {
+          require('neotest-python')({
+            -- dap = { justMiCode = false},
+            python = {path .. '/packages/debugpy/venv/bin/python'},
+            runner = 'unittest',
+          })
+          }
+        })
     end
-  end,
+  },
+  {
+    'mfussenegger/nvim-dap-python',
+    ft = 'python',
+  }
 }
