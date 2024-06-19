@@ -31,7 +31,6 @@ vim.keymap.set("n", "<leader>bq", '<Esc>:%bdelete|edit #|normal`"<Return>',
   { desc = "Delete other buffers" }
 )
 
-
 vim.api.nvim_set_keymap('n', ';t', [[:<C-u>call append(line("."), repeat([""], v:count1))<CR>]],
   { desc = " new line ", silent = true })
 vim.api.nvim_set_keymap('n', ';n', [[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]],

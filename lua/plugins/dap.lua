@@ -22,7 +22,6 @@ return {
     },
     config =function ()
 
-        vim.cmd('echo "hola"')
         local path = vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/')
         require('neotest').setup({
           adapters = {

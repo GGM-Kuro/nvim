@@ -18,7 +18,7 @@ return {
       "markdown",
       "markdown_inline",
       "luadoc",
-      "python",
+      -- "python",
       "vim",
       "regex"
     },

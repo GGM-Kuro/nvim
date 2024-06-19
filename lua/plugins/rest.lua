@@ -8,7 +8,7 @@ return { {
 },
 {
   "rest-nvim/rest.nvim",
-  keys= {{";P",":e $MYVIMRC/lua/kuro/REST.http"}},
+  keys= {{";P",":e $MYVIMRC/lua/kuro/REST.http <CR>"}},
   ft = "http",
   dependencies = { "luarocks.nvim" },
   config = function()

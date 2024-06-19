@@ -10,6 +10,7 @@ return {
   {
     'echasnovski/mini.comment',
     version = false,
+    enabled = false,
     config = function ()
       require("mini.comment").setup()
     end

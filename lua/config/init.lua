@@ -25,7 +25,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-
 autocmd('TextYankPost', {
   group = yank_group,
   pattern = '*',
@@ -42,6 +41,8 @@ autocmd({ "BufWritePre" }, {
   pattern = "*",
   command = [[%s/\s\+$//e]],
 })
+
+
 
 -- autocmd({ "BufWritePre" }, {
 --   pattern = "*.html",

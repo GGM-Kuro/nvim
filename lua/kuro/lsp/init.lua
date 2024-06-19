@@ -90,9 +90,18 @@ lsp_config.clangd.setup({
   capabilities = capabilities,
 })
 
-lsp_config.pyright.setup({
-  capabilities = capabilities,
-})
+local servers = {
+  "pyright",
+  "ruff_lsp",
+}
+
+for _, lsp in ipairs(servers) do
+  lsp_config[lsp].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {"python"},
+  })
+end
 
 lsp_config.jinja_lsp.setup({
   capabilities = capabilities,
