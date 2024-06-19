@@ -8,7 +8,9 @@ return { {
 },
 {
   "rest-nvim/rest.nvim",
-  keys= {{";P",":e $MYVIMRC/lua/kuro/REST.http <CR>"}},
+  keys= {
+    {";r",":e $MYVIMRC/lua/kuro/rest/rest.http <CR>",{desc="Postman File"}}
+  },
   ft = "http",
   dependencies = { "luarocks.nvim" },
   config = function()
