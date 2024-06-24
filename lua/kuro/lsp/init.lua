@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, opts)
 
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" }, opts)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Lsp Rename" }, opts)
+    vim.keymap.set("n", "<leader>sn", vim.lsp.buf.rename, { desc = "Lsp Rename" }, opts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
     vim.keymap.set("n", "<C-f>", vim.lsp.buf.format, opts)
   end,

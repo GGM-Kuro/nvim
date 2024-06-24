@@ -7,7 +7,7 @@ return {
     lazy = false,
     cmd = { "TodoTrouble", "TodoTelescope", "TodoQuickFix" },
     keys = {
-        { '<leader>t', ':TodoTelescope<cr>', desc = 'TODO Explorer' },
+        { '<leader>et', ':TodoTelescope<cr>', desc = 'TODO Explorer' },
         {
             "]t",
             function()
@@ -22,4 +22,3 @@ return {
         },
     },
 }
--- TODO: test

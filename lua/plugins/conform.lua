@@ -1,7 +1,7 @@
 return{
-  'stevearc/conform.nvim',
-  opts = {},
-  config = function()
-    require'kuro.conform'
-  end,
+  'sbdchd/neoformat',
+  -- opts = {},
+  -- config = function()
+  --   require'kuro.conform'
+  -- end,
 }
