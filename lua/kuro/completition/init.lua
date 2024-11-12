@@ -1,8 +1,8 @@
 local cmp, lspkind, luasnip, compare = require "cmp", require "lspkind",
     require "luasnip", require "cmp.config.compare"
 
-local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-luasnip.filetype_extend('htmldjango', { 'django' })
+-- local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+-- luasnip.filetype_extend('htmldjango', { 'django' })
 
 
 local cmp_mappings = cmp.mapping.preset.insert({
@@ -29,8 +29,8 @@ local cmp_mappings = cmp.mapping.preset.insert({
       })
     elseif luasnip.expand_or_jumpable() then
       luasnip.jump(-1)
-    elseif vim.fn[ 'UltiSnips#CanJumpBackwards' ]() then
-      cmp_ultisnips_mappings.jump_backwards(fallback)
+    -- elseif vim.fn[ 'UltiSnips#CanJumpBackwards' ]() then
+    --   cmp_ultisnips_mappings.jump_backwards(fallback)
     else
       fallback()
     end
@@ -42,8 +42,8 @@ local cmp_mappings = cmp.mapping.preset.insert({
       })
     elseif luasnip.expand_or_jumpable() then
       luasnip.expand_or_jump()
-    elseif vim.fn[ 'UltiSnips#CanJumpForwards' ]() then
-      cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+    -- elseif vim.fn[ 'UltiSnips#CanJumpForwards' ]() then
+    --   cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
     else
       fallback()
     end
@@ -75,7 +75,7 @@ cmp.setup({
     { name = "codeium" },
     { name = "vim_snippets" },
     { name = "luasnip" },
-    { name = "ultisnips" },
+    -- { name = "ultisnips" },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "path" },
@@ -107,7 +107,7 @@ cmp.setup({
         nvim_lua = "[api]",
         path = "[pth]",
         luasnip = "[snp]",
-        ultisnips = "[usn]",
+        -- ultisnips = "[usn]",
         ["vim-dadbod-completion"] = "[DB ]",
       },
     },

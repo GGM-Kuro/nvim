@@ -72,7 +72,7 @@ lsp_config["dartls"].setup({
   },
 })
 
-lsp_config.html.setup{
+lsp_config.html.setup {
   capabilities = capabilities,
   filetypes = { "html", "htmldjango" },
 }
@@ -99,7 +99,7 @@ for _, lsp in ipairs(servers) do
   lsp_config[lsp].setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = {"python"},
+    filetypes = { "python" },
   })
 end
 

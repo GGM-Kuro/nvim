@@ -14,6 +14,12 @@ function R(name)
   require("plenary.reload").reload_module(name)
 end
 
+vim.filetype.add({
+  extension = {
+    http = "http",
+  },
+})
+
 vim.api.nvim_create_autocmd('FileType', {
   group = KuroGroup,
   pattern = 'netrw',

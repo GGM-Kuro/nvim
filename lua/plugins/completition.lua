@@ -22,17 +22,17 @@ return {
       --   require "kuro.luasnip"
       -- end,
       dependencies = {
-        "saadparwaiz1/cmp_luasnip",
+        -- "saadparwaiz1/cmp_luasnip",
         -- "honza/vim-snippets",
-        'SirVer/ultisnips',
-        {
-          'quangnguyen30192/cmp-nvim-ultisnips',
-          config = function()
-            require("cmp_nvim_ultisnips").setup{}
-          end
-        }
-        -- snippets
-        -- "rafamadriz/friendly-snippets",
+        -- 'SirVer/ultisnips',
+          -- {
+          --   'quangnguyen30192/cmp-nvim-ultisnips',
+          --   config = function()
+          --     require("cmp_nvim_ultisnips").setup{}
+          --   end
+          -- },
+           -- snippets
+           -- "rafamadriz/friendly-snippets",
       },
     },
     "mattn/emmet-vim",
