@@ -13,7 +13,18 @@ wk.register(
        g = { name = ' Git' },
        u = { name = '󰙅 UndoTree' },
     },
-    [";f"] = { name = '󰀴 Flutter' },
-    [";o"] = { name = '󰮊 Obsidian' }
-  }
+     [';'] = {
+      name = 'REST',
+      r = { name = 'run'},
+      R = { name = 'run all'},
+      y = { name = 'copy cURL'},
+      f = { name = 'search'},
+      [','] = { name = 'jump prev'},
+      ['.'] = { name = 'jump next'},
+      s = { name = 'close'},
+      i = { name = 'inspect'},
+      I = { name = 'show stats'}
+    }
+    }
+    -- [";o"] = { name = '󰮊 Obsidian' }
 )

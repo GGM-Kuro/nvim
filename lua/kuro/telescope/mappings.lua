@@ -37,7 +37,7 @@ map_tele("<leader>fw", "grep_word", { desc = "Grep word under cursor" })
 map_tele("<leader>fs", "grep_string", { desc = "Grep provided input string" })
 map_tele("<leader>fS", "find_symbol", { desc = "symbols" })
 map_tele("<leader>fp", "file_browser_picker", { desc = "Project files" })
-map_tele("<leader>fb", "buffers", { desc = "Open buffers" })
+map_tele("<leader>eb", "buffers", { desc = "Open buffers" })
 
 -- Explorer
 map_tele("<leader>ee", "file_browser_relative", { desc = "Current directory" })
